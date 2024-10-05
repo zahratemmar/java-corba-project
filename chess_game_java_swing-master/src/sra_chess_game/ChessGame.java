@@ -275,6 +275,5 @@ public class ChessGame {
     	piece.name=newp;
          frame.repaint(); 
     }
-    
 
 }
