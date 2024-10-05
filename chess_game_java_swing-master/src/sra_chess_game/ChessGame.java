@@ -276,59 +276,5 @@ public class ChessGame {
          frame.repaint(); 
     }
     
-    
-    public static void repaint(Graphics g) {
-        boolean white = true;
-        for (int y = 0; y < 8; y++) {
-            for (int x = 0; x < 8; x++) {
-                if (white) {
-                    g.setColor(new Color(235, 235, 208));
-                } else {
-                    g.setColor(new Color(119, 148, 85));
-                }
-                g.fillRect(x * 64, y * 64, 64, 64);
-                white = !white;
-            }
-            white = !white;
-        }
-
-        if (selectedPiece != null) {
-            LinkedList<int[]> moves = selectedPiece.getValidMoves(false);
-            g.setColor(new Color(255, 255, 0, 128)); // Highlight valid move squares in yellow
-            for (int[] move : moves) {
-            	if (Math.abs(move[0] - selectedPiece.xp) == 2) { // Castling move
-                    g.fillRect(move[0] * 64, move[1] * 64, 64, 64);
-                }
-                g.fillRect(move[0] * 64, move[1] * 64, 64, 64);
-            }
-        }
-
-        for (Piece p : ps) {
-            int ind = 0;
-            switch (p.name.toLowerCase()) {
-                case "king": ind = 0; break;
-                case "queen": ind = 1; break;
-                case "bishop": ind = 2; break;
-                case "knight": ind = 3; break;
-                case "rook": ind = 4; break;
-                case "pawn": ind = 5; break;
-            }
-            if (!p.isWhite) ind += 6;
-            g.drawImage(imgs[ind], p.x, p.y, pn);
-        }
-    
-
-    	
-    	
-    	
-    	
-    	
-    }
-    
-    
-    
-    
-    
-    
 
 }
